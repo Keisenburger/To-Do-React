@@ -9,7 +9,6 @@ const App = () => {
   const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState(tasks);
   const [filteredData, setFilteredData] = useState(tasks);
-  const [activeFilter, setActiveFilter] = useState([true, false, false]);
   const [taskStatus, setTaskStatus] = useState("all");
 
   const toggleDarkMode = () => {
@@ -82,20 +81,17 @@ const App = () => {
   const filterCompleted = () => {
     const filteredData = data.filter((task) => task.status === "completed");
     setFilteredData(filteredData);
-    setActiveFilter([false, false, true]);
     setTaskStatus("completed");
   };
 
   const filterActive = () => {
     const filteredData = data.filter((task) => task.status === "active");
     setFilteredData(filteredData);
-    setActiveFilter([false, true, false]);
     setTaskStatus("active");
   };
 
   const clearFilter = () => {
     setFilteredData(data);
-    setActiveFilter([true, false, false]);
     setTaskStatus("all");
   };
 
@@ -135,18 +131,18 @@ const App = () => {
             <FilterButton
               text="All"
               handleClick={clearFilter}
-              isActive={activeFilter[0]}
+              isActive={taskStatus === "all" ? true : false}
             />
 
             <FilterButton
               text="Active"
               handleClick={filterActive}
-              isActive={activeFilter[1]}
+              isActive={taskStatus === "active" ? true : false}
             />
             <FilterButton
               text="Completed"
               handleClick={filterCompleted}
-              isActive={activeFilter[2]}
+              isActive={taskStatus === "completed" ? true : false}
             />
           </div>
           {/* task */}
@@ -196,5 +192,3 @@ const App = () => {
 };
 
 export default App;
-
-// hi yu bainadaa andaa
