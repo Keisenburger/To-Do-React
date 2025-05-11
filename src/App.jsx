@@ -15,6 +15,10 @@ const App = () => {
     setIsDark(!isDark);
   };
 
+  onkeydown = (event) => {
+    if (event.key === "Enter") createTask();
+  };
+
   const applyFilter = (taskData, status = taskStatus) => {
     if (status === "completed") {
       setFilteredData(taskData.filter((task) => task.status === "completed"));
@@ -71,7 +75,9 @@ const App = () => {
 
   const clearCompleted = () => {
     const filteredData = data.filter((task) => task.status === "active");
-    if (window.confirm("Are you sure?")) {
+    if (completedCounter === 0) {
+      alert("No completed task yet.");
+    } else if (window.confirm("Are you sure?")) {
       setData(filteredData);
       setFilteredData(filteredData);
       applyFilter(filteredData);
@@ -102,7 +108,7 @@ const App = () => {
   return (
     <div className={isDark ? "dark" : ""}>
       <div
-        className="flex justify-center bg-[#F3F4F6] h-screen w-screen pt-[60px] dark:bg-[#0D0D0D]  transition duration-800 ease-linear
+        className="flex justify-center bg-[#F3F4F6] h-full min-h-screen w-screen py-[60px] dark:bg-[#0D0D0D]  transition duration-800 ease-linear
     "
       >
         <button
