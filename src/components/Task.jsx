@@ -8,12 +8,12 @@ const Task = (props) => {
   return (
     <div
       key={props.id}
-      className="flex justify-between w-full bg-[#F9FAFB] items-center  p-[16px] text-sm h-[62px] rounded-md  dark:bg-[#212121] dark:text-white  transition duration-800 ease-linear"
+      className="flex justify-between w-full hover:bg-[#ebe9e9]   bg-[#F9FAFB] items-center  p-[16px] text-sm h-[62px] rounded-md  dark:bg-[#212121] dark:text-white  transition duration-800 ease-linear"
     >
       <div className="flex gap-[10px] items-center">
         <input
           type="checkbox"
-          className="w-5 h-5 border dark: border-[#6B7280] dark:bg-[#2563EB]  transition duration-800 ease-linear"
+          className="w-5 h-5 border dark: border-[#6B7280] dark:bg-[#2563EB]  transition duration-800 ease-linear cursor-pointer"
           onClick={() => {
             props.toggleStatus(props.id);
             setIsChecked(!isChecked);
